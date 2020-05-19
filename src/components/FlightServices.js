@@ -1,52 +1,84 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { Redirect } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { Box, Divider } from '@material-ui/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlane, faClock, faPlaneDeparture, faCalendarAlt, faPlaneArrival } from '@fortawesome/free-solid-svg-icons';
+import { selectFlight } from '../redux/actions/searchFlightActions';
+import FlightHeader from './FlightHeader';
+import FlightDetail from './FlightDetail';
 
-const FlightServices = ({ flight, history }) => {
-    
-    const goToCheckin = () => {
-        history.push('/checkin');
-    }
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex'
+  },
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row'
+  },
+  srcDest: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '1rem'
+  },
+  srvcBtn: {
+    display: 'flex',
+    justifyContent: 'flex-end'
+  }
+}));
 
-	return (
-		<div className="container">
-			<div className="row">
-				<div className="col">{flight.flightName}</div>
-				<div className="col">{flight.flightNo}</div>
-			</div>
-			<div className="row">
-				<div className="col">{flight.source}</div>
-				<div className="col">{flight.destination}</div>
-			</div>
-			<div className="row">
-				<div className="col">
-					<label>Arrival: </label>
-					{flight.arrivalTime}
-				</div>
-				<div className="col">
-					<label>Departure: </label>
-					{flight.departureTime}
-				</div>
-			</div>
-			<div className="row">
-				<div className="col">
-					<button type="button" onClick={goToCheckin} className="btn btn-outline-primary btn-lg">
-						CHECK-IN SERVICES
-					</button>
-				</div>
-				<div className="col">
-					<button type="button" className="btn btn-outline-primary btn-lg">
-						IN-FLIGHT SERVICES
-					</button>
-				</div>
-			</div>
-		</div>
-	);
+const mapStateToProps = (state) => {
+  return {
+    selectedFlight: state.searchFlights.selectedFlight
+  }
+}
+
+const mapDisptachToProps = {
+  selectFlight
+}
+
+const FlightServices = ({ flight, selectedFlight, selectFlight }) => {
+  const classes = useStyles();
+  if (selectedFlight !== undefined) {
+    return <Redirect to='/checkin'></Redirect>
+  }
+  const goToCheckin = () => {
+    selectFlight(flight.flightNo);
+  };
+  return (
+    <>
+      <Grid item className={classes.header} xs>
+        <FlightHeader flight={flight} />
+      </Grid>
+      <Grid item className={classes.srcDest}>
+        <FlightDetail flight={flight} />
+      </Grid>
+      <Divider style={{ margin: '1rem' }} />
+      <Grid item className={classes.srvcBtn}>
+        <Box component="span" mr={2}>
+          <Button variant="outlined" onClick={goToCheckin} size="large" color="primary">
+            CHECK-IN
+						</Button>
+        </Box>
+        <Box component="span">
+          <Button variant="outlined" size="large" color="primary">
+            IN-FLIGHT
+						</Button>
+        </Box>
+      </Grid>
+    </>
+  );
 };
 
 FlightServices.propTypes = {
-    flight: PropTypes.object.isRequired,
-    history: PropTypes.object
+  flight: PropTypes.object.isRequired,
+  history: PropTypes.object
 };
 
-export default withRouter(FlightServices);
+export default connect(mapStateToProps, mapDisptachToProps)(FlightServices);

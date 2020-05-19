@@ -2,77 +2,82 @@ const flights = [
 	{
 		id: 111,
 		flightNo: '332A',
-		flightName: 'Test flight1',
-		arrivalTime: '09:30',
-		arrivalDate: '4/1/2020',
-		departureTime: '17:30',
-		departureDate: '4/2/2020',
-		arrivalAirport: 'Chennai',
-		departureAirport: 'Chennai',
-		source: 'MAS',
-		destination: 'JFK',
-    passengers: {},
-    seats: []
+		flightName: 'QATAR AIRWAYS',
+		source: 'BLR',
+		sourceFullName: 'Bengaluru',
+		srcDepartureTime: '17:30',
+		srcDepartureDate: '4/1/2020',
+		destination: 'DOH',
+		destFullName: 'Doha',
+		destArrivalTime: '02:30',
+		destArrivalDate: '4/2/2020',
+		passengers: {},
+		seats: [],
+		logoPath: '/static/images/qatar-airways-emblem.png'
 	},
 	{
 		id: 112,
 		flightNo: '132F',
-		flightName: 'Test flight2',
-		arrivalTime: '14:30',
-		arrivalDate: '4/10/2020',
-		departureTime: '23:30',
-		departureDate: '4/11/2020',
-		arrivalAirport: 'Mumbai',
-		departureAirport: 'Mumbai',
-		source: 'BLR',
-		destination: 'GB',
-    passengers: {},
-    seats: []
+		flightName: 'AIR INDIA',
+		source: 'BLR',	
+		sourceFullName: 'Bengaluru',	
+		srcDepartureTime: '18:30',
+		srcDepartureDate: '4/1/2020',
+		destination: 'BOM',
+		destFullName: 'Bombay',
+		destArrivalTime: '23:30',
+		destArrivalDate: '4/1/2020',
+		passengers: {},
+		seats: [],
+		logoPath: '/static/images/air-india-vector-logo.png'
 	},
 	{
 		id: 113,
 		flightNo: '432Y',
-		flightName: 'Test flight3',
-		arrivalTime: '03:30',
-		arrivalDate: '4/2/2020',
-		departureTime: '10:30',
-		departureDate: '4/2/2020',
-		arrivalAirport: 'Chennai',
-		departureAirport: 'Chennai',
-		source: 'MAS',
-		destination: 'Doha',
-    passengers: {},
-    seats: []
+		flightName: 'EMIRATES AIRLINES',
+		source: 'BLR',	
+		sourceFullName: 'Bengaluru',	
+		srcDepartureTime: '19:30',
+		srcDepartureDate: '4/1/2020',
+		destination: 'AUH',
+		destFullName: 'Abu Dhabi',
+		destArrivalTime: '03:30',
+		destArrivalDate: '4/2/2020',
+		passengers: {},
+		seats: [],
+		logoPath: '/static/images/emirates.png'
 	},
 	{
 		id: 114,
 		flightNo: '882D',
-		flightName: 'Test flight4',
-		arrivalTime: '09:30',
-		arrivalDate: '4/5/2020',
-		departureTime: '14:30',
-		departureDate: '4/5/2020',
-		arrivalAirport: 'Chennai',
-		departureAirport: 'Chennai',
-		source: 'MAS',
-		destination: 'DLH',
-    passengers: {},
-    seats: []
+		flightName: 'SINGAPORE AIRLINES',
+		source: 'BLR',	
+		sourceFullName: 'Bengaluru',	
+		srcDepartureTime: '22:30',
+		srcDepartureDate: '4/1/2020',
+		destination: 'MAA',
+		destFullName: 'Chennai',
+		destArrivalTime: '01:30',
+		destArrivalDate: '4/2/2020',
+		passengers: {},
+		seats: [],
+		logoPath: '/static/images/singapore-airlines-vector-logo-small.png'
 	},
 	{
 		id: 115,
 		flightNo: '782M',
-		flightName: 'Test flight5',
-		arrivalTime: '05:30',
-		arrivalDate: '4/1/2020',
-		departureTime: '11:30',
-		departureDate: '4/2/2020',
-		arrivalAirport: 'Chennai',
-		departureAirport: 'Chennai',
-		source: 'MAS',
-		destination: 'JFK',
-    passengers: {},
-    seats: []
+		flightName: 'SRILANKAN AIRLINES',
+		source: 'BLR',
+		sourceFullName: 'Bengaluru',
+		srcDepartureTime: '23:30',
+		srcDepartureDate: '4/1/2020',
+		destination: 'CMB',
+		destFullName: 'Colombo',
+		destArrivalTime: '08:30',
+		destArrivalDate: '4/2/2020',
+		passengers: {},
+		seats: [],
+		logoPath: '/static/images/srilankan-airlines-vector-logo.png'
 	}
 ];
 
@@ -84,12 +89,12 @@ const passengers = [
 		passportDetails: 'AABBHH123',
 		dob: '11/11/1978',
 		address: 'Test address Bob',
-		seatNo: '',
+		seatNo: '1A',
 		isCheckedIn: false,
 		isPhysChallenged: false,
 		isInfant: false,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: [ 'Premium seat purchase', 'Special meals' ]
 	},
 	{
 		id: 912,
@@ -103,7 +108,7 @@ const passengers = [
 		isPhysChallenged: true,
 		isInfant: false,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: [ 'Special meals', 'Wi-Fi pass' ]
 	},
 	{
 		id: 913,
@@ -117,7 +122,7 @@ const passengers = [
 		isPhysChallenged: false,
 		isInfant: false,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: [ 'Special meals', 'Wi-Fi pass' ]
 	},
 	{
 		id: 914,
@@ -131,7 +136,7 @@ const passengers = [
 		isPhysChallenged: false,
 		isInfant: false,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: []
 	},
 	{
 		id: 915,
@@ -145,7 +150,7 @@ const passengers = [
 		isPhysChallenged: false,
 		isInfant: false,
 		isCarryingInfant: true,
-		ancillaryServices: null
+		ancillaryServices: [ 'Premium seat purchase', 'Special meals' ]
 	},
 	{
 		id: 916,
@@ -159,7 +164,7 @@ const passengers = [
 		isPhysChallenged: false,
 		isInfant: true,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: []
 	},
 	{
 		id: 917,
@@ -173,7 +178,7 @@ const passengers = [
 		isPhysChallenged: false,
 		isInfant: false,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: [ 'Premium seat purchase', 'Wi-Fi pass' ]
 	},
 	{
 		id: 918,
@@ -187,11 +192,11 @@ const passengers = [
 		isPhysChallenged: false,
 		isInfant: false,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: []
 	},
 	{
 		id: 919,
-		flightNo: '132F',
+		flightNo: '332A',
 		passengerName: 'Karthik KK',
 		passportDetails: 'AALBHH123',
 		dob: '01/11/1984',
@@ -201,195 +206,247 @@ const passengers = [
 		isPhysChallenged: false,
 		isInfant: false,
 		isCarryingInfant: false,
-		ancillaryServices: null
+		ancillaryServices: [ 'Premium seat purchase', 'Special meals' ]
+	},
+	{
+		id: 920,
+		flightNo: '332A',
+		passengerName: 'Mary Jim',
+		passportDetails: 'MALBHH123',
+		dob: '01/11/1984',
+		address: 'Test address MJ',
+		seatNo: '',
+		isCheckedIn: false,
+		isPhysChallenged: false,
+		isInfant: false,
+		isCarryingInfant: false,
+		ancillaryServices: []
+	},
+	{
+		id: 921,
+		flightNo: '332A',
+		passengerName: 'Jim Maida',
+		passportDetails: 'JMLBHH123',
+		dob: '01/11/1984',
+		address: 'Test address JM',
+		seatNo: '',
+		isCheckedIn: false,
+		isPhysChallenged: false,
+		isInfant: false,
+		isCarryingInfant: false,
+		ancillaryServices: []
+	},
+	{
+		id: 922,
+		flightNo: '332A',
+		passengerName: 'Natarajan C',
+		passportDetails: 'NCLBHH123',
+		dob: '01/11/1984',
+		address: 'Test address CN',
+		seatNo: '',
+		isCheckedIn: false,
+		isPhysChallenged: false,
+		isInfant: false,
+		isCarryingInfant: false,
+		ancillaryServices: [ 'Premium seat purchase', 'Special meals', 'Wi-Fi pass' ]
+	},
+	{
+		id: 923,
+		flightNo: '332A',
+		passengerName: 'Balaji N',
+		passportDetails: 'BNLBHH123',
+		dob: '01/11/1990',
+		address: 'Test address BN',
+		seatNo: '',
+		isCheckedIn: false,
+		isPhysChallenged: false,
+		isInfant: false,
+		isCarryingInfant: false,
+		ancillaryServices: [ 'Special meals', 'Wi-Fi pass' ]
 	}
 ];
 
 const seats = [
-  {
-	id: 111,
-	flightNo: '332A',
-    data: {
-      1: [
-        {
-          label: '1A',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1B',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1C',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1D',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1E',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1F',
-          status: null,
-          colorCode: null
-        }
-      ],
-      2: [
-        {
-          label: '2A',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2B',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2C',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2D',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2E',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2F',
-          status: null,
-          colorCode: null
-        }
-      ],
-      3: [
-        {
-          label: '3A',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '3B',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '3C',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '3D',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '3E',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '3F',
-          status: null,
-          colorCode: null
-        }
-      ]
-    }
-    
-  },
-  {
-	id: 112,
-	flightNo: '132F',
-    data: {
-      1: [
-        {
-          label: '1A',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1B',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1C',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1D',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1E',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '1F',
-          status: null,
-          colorCode: null
-        }
-      ],
-      2: [
-        {
-          label: '2A',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2B',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2C',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2D',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2E',
-          status: null,
-          colorCode: null
-        },
-        {
-          label: '2F',
-          status: null,
-          colorCode: null
-        }
-      ],
-    }
-  }
+	{
+		id: 111,
+		flightNo: '332A',
+		data: {
+			1: [
+				{
+					label: '1A',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1B',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1C',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1D',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1E',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1F',
+					status: null,
+					colorCode: null
+				}
+			],
+			2: [
+				{
+					label: '2A',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2B',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2C',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2D',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2E',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2F',
+					status: null,
+					colorCode: null
+				}
+			],
+			3: [
+				{
+					label: '3A',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '3B',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '3C',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '3D',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '3E',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '3F',
+					status: null,
+					colorCode: null
+				}
+			]
+		}
+	},
+	{
+		id: 112,
+		flightNo: '132F',
+		data: {
+			1: [
+				{
+					label: '1A',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1B',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1C',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1D',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1E',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '1F',
+					status: null,
+					colorCode: null
+				}
+			],
+			2: [
+				{
+					label: '2A',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2B',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2C',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2D',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2E',
+					status: null,
+					colorCode: null
+				},
+				{
+					label: '2F',
+					status: null,
+					colorCode: null
+				}
+			]
+		}
+	}
 ];
-  
-	
-
 
 const ancillaryServices = [ 'Special meals', 'in-flight shop' ];
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
 	flights,
-  passengers,
-  seats,
+	passengers,
+	seats,
 	ancillaryServices
 };

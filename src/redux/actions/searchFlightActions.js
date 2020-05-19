@@ -1,8 +1,8 @@
 import * as airlineApi from '../../api/airlineApi';
-import * as airlineSer from '../../api/airlineService';
 import axios from 'axios';
 const baseUrl = process.env.API_URL;
 import * as types from './actionTypes';
+import { push } from 'react-router-redux'
 
 export function loadFlights() {
 	return function(dispatch) {
@@ -24,16 +24,16 @@ export function loadFlightsSuccess(flights) {
 	};
 }
 
-export function setSelectedFlight(option, passengers, seats) {
+export function setSelectedFlight(selectedFlightNo, passengers, seats) {
 	return {
 		type: types.SELECT_FLIGHT,
-		option,
+		selectedFlightNo,
 		passengers,
 		seats
 	};
 }
 
-export function selectFlight(option) {
+export function selectFlight(selectedFlightNo) {
 	return function(dispatch) {
 		return axios.all([ 
 			axios.get(`${baseUrl}/passengers/`),
@@ -43,34 +43,20 @@ export function selectFlight(option) {
 			const passList = resArr[0].data;
 			const seatList = resArr[1].data;
 			const fPassengers = passList.filter((p) => {
-				return option.value === p.flightNo;
+				return selectedFlightNo === p.flightNo;
 			});
 			const fSeat = seatList.filter((s) => {
-				return option.value === s.flightNo;
+				return selectedFlightNo === s.flightNo;
 			});
-			dispatch(setSelectedFlight(option, fPassengers, fSeat));
+			dispatch(setSelectedFlight(selectedFlightNo, fPassengers, fSeat));
+			
+		})
+		.then(() => {
+			console.log('then 2');
+			//dispatch(push('/checkin'));
 		});
 	};
 }
-
-// export function selectFlight(option) {
-// 	return function(dispatch) {
-// 		return airlineApi
-// 			.getPassengersApi()
-// 			.then((passengers) => {
-// 				const fPassengers = passengers.filter((p) => {
-// 					return option.value === p.flightNo;
-// 				});
-// 				console.log('fPassengers -- ', fPassengers);
-// 				dispatch(setSelectedFlight(option, fPassengers));
-// 				dispatch(fetchSeats(option.value));
-// 				//dispatch(selectFlightSuccess(fPassengers));
-// 			})
-// 			.catch((error) => {
-// 				console.log('load passengers error');
-// 			});
-// 	};
-// }
 
 export function fetchSeats(flightNo) {
 	return function(dispatch) {
@@ -91,23 +77,3 @@ export function fetchSeatsSuccess(seats) {
 		seats
 	};
 }
-
-// export function selectFlightSuccess(passengers) {
-// 	return {
-// 		type: types.SELECT_FLIGHT_SUCCESS,
-// 		passengers
-// 	};
-// }
-
-// export function loadFlights() {
-// 	return function(dispatch) {
-// 		return airlineApi
-// 			.getFlightList()
-// 			.then((flights) => {
-// 				dispatch(loadFlightsSuccess(flights));
-// 			})
-// 			.catch((error) => {
-// 				console.log('load flights error');
-// 			});
-// 	};
-// }

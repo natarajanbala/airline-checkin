@@ -1,6 +1,7 @@
 import initialState from "./initialState";
 import deepFreeze from 'deep-freeze';
 import * as types from "../actions/actionTypes";
+import update from 'immutability-helper';
 
 export default function searchFlightsReducer(state = initialState, action) {
     deepFreeze(state);
@@ -12,7 +13,7 @@ export default function searchFlightsReducer(state = initialState, action) {
             };
         }
         case types.SELECT_FLIGHT: {
-            let selectedFlight = state.flights.find((f) => action.option.value === f.flightNo);
+            let selectedFlight = state.flights.find((f) => action.selectedFlightNo === f.flightNo);
             let seat;
             if (action.seats && action.seats.length > 0) {
                 seat = action.seats[0].data;
@@ -26,6 +27,35 @@ export default function searchFlightsReducer(state = initialState, action) {
                 ...state,
                 selectedFlight
             };
+        }
+        case types.GRID_SELECTION: {
+            let passList = [];
+            if (action.selectedItems.length > 0) {
+                passList = state.selectedFlight.passengers.filter(p => action.selectedItems.includes(p.id));
+            }
+            return {
+                ...state,
+                gridSelection: passList
+            }
+        }
+        case types.SAVE_CHECKIN: {            
+            // let index;
+            // for (let i = 0; i < state.selectedFlight.passengers.length; i++) {
+            //     if(state.selectedFlight.passengers[i].id === action.passengerData.id) {
+            //         index = i;
+            //         break;
+            //     }
+            // }
+            // return update(state, {
+            //     selectedFlight: {
+            //         passengers: {
+            //             [index]: {
+            //                 seatNo: {$set: action.seat}
+            //             }
+            //         }
+            //     }
+            // });
+            return state;
         }
         default: 
         return state; 

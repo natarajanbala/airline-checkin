@@ -4,3 +4,17 @@ export const SELECT_FLIGHT = 'SELECT_FLIGHT';
 
 export const FETCH_SEATS = 'FETCH_SEATS';
 export const FETCH_SEATS_SUCCESS = 'FETCH_SEATS_SUCCESS';
+
+
+export const SAVE_CHECKIN = 'SAVE_CHECKIN';
+
+
+
+
+export const GRID_SELECTION = 'GRID_SELECTION';
+
+export const CHECK_IN = 'CHECK_IN';
+export const UNDO_CHECK_IN = 'UNDO_CHECK_IN';
+
+export const SEAT_CHANGE = 'SEAT_CHANGE';
+
